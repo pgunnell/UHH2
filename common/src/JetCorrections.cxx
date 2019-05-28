@@ -740,6 +740,77 @@ const JERSmearing::SFtype1 JERSmearing::SF_13TeV_Autumn18_RunD_V1 = {
 
 ////
 
+// 2018 -> to be used with combined dataset
+const JERSmearing::SFtype1 JERSmearing::SF_13TeV_Autumn18_RunABCD_V4 = {
+  // 0 = upper jet-eta limit
+  // 1 = JER SF
+  // 2 = JER SF + 1sigma
+  // 3 = JER SF - 1sigma
+
+  {{0.522, 1.15448, 1.18531, 1.123650}},
+  {{0.783, 1.14808, 1.19957, 1.096590}},
+  {{1.131, 1.09985, 1.13844, 1.061260}},
+  {{1.305, 1.09287, 1.17851, 1.007230}},
+  {{1.740, 1.10930, 1.18108, 1.037530}},
+  {{1.930, 1.10049, 1.15198, 1.049000}},
+  {{2.043, 1.06031, 1.19040, 0.930216}},
+  {{2.322, 1.12870, 1.18184, 1.075560}},
+  {{2.500, 1.33970, 1.45443, 1.224970}},
+  {{2.853, 2.03250, 2.56856, 1.496440}},
+  {{2.964, 2.05671, 2.36272, 1.750700}},
+  {{3.139, 1.18680, 1.22439, 1.149210}},
+  {{5.191, 1.09220, 1.14111, 1.043290}},
+
+};
+
+////
+
+// 2018 -> to be used with RunABC
+const JERSmearing::SFtype1 JERSmearing::SF_13TeV_Autumn18_RunABC_V4 = {
+  // 0 = upper jet-eta limit
+  // 1 = JER SF
+  // 2 = JER SF + 1sigma
+  // 3 = JER SF - 1sigma
+  {{0.522, 1.1677, 1.2154, 1.1200}},
+  {{0.783, 1.1475, 1.1995, 1.0954}},
+  {{1.131, 1.1029, 1.1339, 1.0719}},
+  {{1.305, 1.0781, 1.1731, 0.9830}},
+  {{1.740, 1.1006, 1.1852, 1.0161}},
+  {{1.930, 1.1019, 1.1405, 1.0633}},
+  {{2.043, 1.0459, 1.2036, 0.8881}},
+  {{2.322, 1.1612, 1.2258, 1.0966}},
+  {{2.500, 1.2299, 1.3386, 1.1212}},
+  {{2.853, 1.6736, 2.0528, 1.2944}},
+  {{2.964, 1.7292, 1.9300, 1.5285}},
+  {{3.139, 1.2257, 1.2709, 1.1805}},
+  {{5.191, 1.0733, 1.1409, 1.0057}},
+
+};
+
+// 2018 -> to be used with RunD
+const JERSmearing::SFtype1 JERSmearing::SF_13TeV_Autumn18_RunD_V4 = {
+  // 0 = upper jet-eta limit
+  // 1 = JER SF
+  // 2 = JER SF + 1sigma
+  // 3 = JER SF - 1sigma
+  {{0.522, 1.1588, 1.1980, 1.1196}},
+  {{0.783, 1.1504, 1.2231, 1.0776}},
+  {{1.131, 1.1253, 1.1596, 1.0910}},
+  {{1.305, 1.1217, 1.2043, 1.0390}},
+  {{1.740, 1.1069, 1.1959, 1.0179}},
+  {{1.930, 1.0916, 1.1346, 1.0486}},
+  {{2.043, 1.0977, 1.1927, 1.0026}},
+  {{2.322, 1.1177, 1.1898, 1.0456}},
+  {{2.500, 1.4494, 1.5997, 1.2992}},
+  {{2.853, 2.3588, 2.9999, 1.7177}},
+  {{2.964, 2.2520, 2.6062, 1.8978}},
+  {{3.139, 1.1759, 1.2298, 1.1219}},
+  {{5.191, 1.0777, 1.1319, 1.0235}},
+
+};
+
+////
+
 JetResolutionSmearer::JetResolutionSmearer(uhh2::Context & ctx){
   // Auto-determine correct resolution txt file & SFs from year + jet & PU algorithms
   std::string jetstr = uhh2::string2lowercase(ctx.get("JetCollection"));
@@ -772,8 +843,8 @@ JetResolutionSmearer::JetResolutionSmearer(uhh2::Context & ctx){
     JER_sf = JERSmearing::SF_13TeV_Fall17_V3;
     resFilename = "2017/Fall17_V3_MC_PtResolution_"+jetAlgoRadius+"PF"+puName+".txt";
   } else if (year == Year::is2018) {
-    JER_sf = JERSmearing::SF_13TeV_Autumn18_V1;
-    resFilename = "2018/Autumn18_V1_MC_PtResolution_"+jetAlgoRadius+"PF"+puName+".txt";
+    JER_sf = JERSmearing::SF_13TeV_Autumn18_RunABCD_V4;
+    resFilename = "2018/Autumn18_V4_MC_PtResolution_"+jetAlgoRadius+"PF"+puName+".txt";
   } else {
     throw runtime_error("Cannot find suitable jet resolution file & scale factors for this year for JetResolutionSmearer");
   }
@@ -921,6 +992,27 @@ void GenericJetResolutionSmearer::apply_JER_smearing(std::vector<RJ>& rec_jets, 
       else{
 	c = JER_SFs_.at(ieta).at(3);
       }
+      /*
+      if(abseta>2.5 && abseta<3.139){
+	  TF1 *f3 = new TF1("SFnew3","sqrt(pow([0],2)/(x*x)+pow(sqrt([3])*[1],2)/x+pow([3]*[2],2)) / sqrt(pow([3]*[0],2)/(x*x)+pow([3]*[1],2)/x+pow([3]*[2],2)) * [3]",10,3000);
+	  
+	  if(abseta>=2.5 && abseta<2.853)
+	    f3->SetParameters(0.00052, 0.95257, 0.03180, c);
+	  
+	  if(abseta>=2.853 && abseta<2.965)
+	     f3->SetParameters(0.00299, 1.119685, 0.08168, c);
+	  
+	  if(abseta>=2.965 && abseta<3.139)
+	     f3->SetParameters(0.00548, 1.86809, 0.07888, c);
+	  // if(genpt>0)
+	  //   c = f3->Eval(genpt);
+	  // else 
+	  //   c = c;
+	  c = f3->Eval(recopt);
+	  //cout<<"c = "<<c<<" abseta = "<<abseta<<" recopt = "<<recopt<<endl;
+      }	     	  
+      */
+
       float new_pt = -1.;
       //use smearing method in case a matching generator jet was found
       if(genpt>0){
