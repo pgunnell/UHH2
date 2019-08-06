@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd">[
+       <!ENTITY DATA_JetHT2017B SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/DATA_JetHT2017B.xml">
+]>
+
+<!--
+   <ConfigParse NEventsBreak="0" LastBreak="0" FileSplit="10" />
+   <ConfigSGE RAM ="2" DISK ="2" Mail="paolo.gunnellini@desy.de" Notification="as" Workdir="splitInclusiveJetsDataRunB"/>
+-->
+
+<!-- OutputLevel controls which messages are printed; set to VERBOSE or DEBUG for more verbosity, to WARNING or ERROR for less -->
+<JobConfiguration JobName="ExampleCycleJob" OutputLevel="INFO">
+	<Library Name="libSUHH2InclusiveJets"/>
+	<Package Name="libSUHH2InclusiveJets"/>
+	<Cycle Name="uhh2::AnalysisModuleRunner" OutputDirectory="/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config//splitInclusiveJetsDataRunB/" PostFix="_17" TargetLumi="1">
+		<InputData Cacheable="False" Lumi="1.0" Type="Data" Version="DataJetHTRunB_2017v2">
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_252.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_253.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_254.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_255.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_256.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_257.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_258.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_259.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_26.root" Lumi="0.0"/>
+			<In FileName="/pnfs/desy.de/cms/tier2//store/user/salbrech/RunII_102X_v1/2017v2//JetHT/crab_JetHT_2017B_v1/190510_082853/0000/Ntuple_260.root" Lumi="0.0"/>
+			<OutputTree Name="AnalysisTree"/>
+			<InputTree Name="AnalysisTree"/>
+		</InputData>
+		<UserConfig>
+			<Item Name="PrimaryVertexCollection" Value="offlineSlimmedPrimaryVertices"/>
+			<Item Name="JetCollection" Value="jetsAk4Puppi"/>
+			<Item Name="GenJetCollection" Value="slimmedGenJets"/>
+			<Item Name="ElectronCollection" Value="slimmedElectronsUSER"/>
+			<Item Name="MuonCollection" Value="slimmedMuonsUSER"/>
+			<Item Name="METName" Value="slimmedMETs"/>
+			<Item Name="AnalysisModule" Value="InclusiveJetsModule"/>
+			<Item Name="use_sframe_weight" Value="false"/>
+			<Item Name="pileup_directory" Value="/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/common/data/2017/MyMCPileupHistogram.root"/>
+			<Item Name="pileup_directory_data" Value="/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/common/data/2017/MyDataPileupHistogram.root"/>
+			<Item Name="TestKey" Value="TestKeyValue"/>
+		</UserConfig>
+	</Cycle>
+</JobConfiguration>

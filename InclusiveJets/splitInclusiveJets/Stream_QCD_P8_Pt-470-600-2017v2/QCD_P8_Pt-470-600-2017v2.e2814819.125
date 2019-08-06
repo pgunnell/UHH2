@@ -1,0 +1,215 @@
+
+
+
+===========================================================
+There was a crash.
+This is the entire stack trace of all threads:
+===========================================================
+#0  0x00000030142ac89e in waitpid () from /lib64/libc.so.6
+#1  0x000000301423e4e9 in do_system () from /lib64/libc.so.6
+#2  0x00002b4b8dd9b911 in TUnixSystem::StackTrace() () from /cvmfs/cms.cern.ch/slc6_amd64_gcc700/cms/cmssw/CMSSW_10_2_11/external/slc6_amd64_gcc700/lib/libCore.so
+#3  0x00002b4b8dd9df5c in TUnixSystem::DispatchSignals(ESignals) () from /cvmfs/cms.cern.ch/slc6_amd64_gcc700/cms/cmssw/CMSSW_10_2_11/external/slc6_amd64_gcc700/lib/libCore.so
+#4  <signal handler called>
+#5  parse_lsda_header (context=context
+entry=0x7fff0fb31dc0, p=p
+entry=0x2b4b9b2eb22c <error: Cannot access memory at address 0x2b4b9b2eb22c>, info=info
+entry=0x7fff0fb31c60) at ../../../../libstdc++-v3/libsupc++/eh_personality.cc:58
+#6  0x00002b4b8f4fa1cb in __cxxabiv1::__gxx_personality_v0 (version=<optimized out>, actions=1, exception_class=5138137972254386944, ue_header=0xaf0b1f0, context=0x7fff0fb31dc0) at ../../../../libstdc++-v3/libsupc++/eh_personality.cc:445
+#7  0x00002b4b8f5fc28b in _Unwind_RaiseException (exc=exc
+entry=0xaf0b1f0) at ../../../libgcc/unwind.inc:113
+#8  0x00002b4b8f4facf6 in __cxxabiv1::__cxa_throw (obj=obj
+entry=0xaf0b210, tinfo=0x2b4b8f5dea90 <typeinfo for std::runtime_error>, dest=0x2b4b8f50fee0 <std::runtime_error::~runtime_error()>) at ../../../../libstdc++-v3/libsupc++/eh_throw.cc:88
+#9  0x00002b4b9b341bd7 in uhh2::Hists::hist (this=0x8752890, name=0xadff790 "pt_resolution_125") at src/Hists.cxx:16
+#10 0x00002b4b9b2d5643 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_Alloc_hider::_Alloc_hider (__a=..., __dat=<optimized out>, this=0x0) at /cvmfs/cms.cern.ch/slc6_amd64_gcc700/external/gcc/7.0.0-omkpbe2/include/c++/7.3.1/bits/basic_string.h:149
+#11 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string (__str=..., this=0x0) at /cvmfs/cms.cern.ch/slc6_amd64_gcc700/external/gcc/7.0.0-omkpbe2/include/c++/7.3.1/bits/basic_string.h:439
+#12 uhh2::Context::get (key=..., this=0x7457a40) at /nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/core/include/AnalysisModule.h:97
+#13 uhh2examples::MCShowerWeight::MCShowerWeight (this=0x348, ctx=...) at src/MCWeightsModule.cxx:71
+#14 0x402e000000000000 in ?? ()
+#15 0x4032000000000000 in ?? ()
+#16 0x4035000000000000 in ?? ()
+#17 0x4038000000000000 in ?? ()
+#18 0x403c000000000000 in ?? ()
+#19 0x4040000000000000 in ?? ()
+#20 0x4042800000000000 in ?? ()
+#21 0x4045800000000000 in ?? ()
+#22 0x4048800000000000 in ?? ()
+#23 0x404c000000000000 in ?? ()
+#24 0x4050000000000000 in ?? ()
+#25 0x4052800000000000 in ?? ()
+#26 0x4055000000000000 in ?? ()
+#27 0x4058400000000000 in ?? ()
+#28 0x405c800000000000 in ?? ()
+#29 0x4060a00000000000 in ?? ()
+#30 0x4063200000000000 in ?? ()
+#31 0x4065c00000000000 in ?? ()
+#32 0x4068800000000000 in ?? ()
+#33 0x406b800000000000 in ?? ()
+#34 0x406ea00000000000 in ?? ()
+#35 0x4071000000000000 in ?? ()
+#36 0x4072c00000000000 in ?? ()
+#37 0x4074a00000000000 in ?? ()
+#38 0x4076a00000000000 in ?? ()
+#39 0x4078b00000000000 in ?? ()
+#40 0x407ae00000000000 in ?? ()
+#41 0x407d400000000000 in ?? ()
+#42 0x407fb00000000000 in ?? ()
+#43 0x4081200000000000 in ?? ()
+#44 0x4082800000000000 in ?? ()
+#45 0x4083f00000000000 in ?? ()
+#46 0x4085700000000000 in ?? ()
+#47 0x4087080000000000 in ?? ()
+#48 0x4088b00000000000 in ?? ()
+#49 0x408a700000000000 in ?? ()
+#50 0x408c480000000000 in ?? ()
+#51 0x408e380000000000 in ?? ()
+#52 0x4090200000000000 in ?? ()
+#53 0x4091340000000000 in ?? ()
+#54 0x4092500000000000 in ?? ()
+#55 0x4093800000000000 in ?? ()
+#56 0x4094bc0000000000 in ?? ()
+#57 0x4096080000000000 in ?? ()
+#58 0x4097640000000000 in ?? ()
+#59 0x4098d00000000000 in ?? ()
+#60 0x409a500000000000 in ?? ()
+#61 0x409be00000000000 in ?? ()
+#62 0x409d880000000000 in ?? ()
+#63 0x409f400000000000 in ?? ()
+#64 0x40a0880000000000 in ?? ()
+#65 0x40a17c0000000000 in ?? ()
+#66 0x40a27c0000000000 in ?? ()
+#67 0x40a3880000000000 in ?? ()
+#68 0x40a4a00000000000 in ?? ()
+#69 0x40a5c60000000000 in ?? ()
+#70 0x40a6fa0000000000 in ?? ()
+#71 0x40a83e0000000000 in ?? ()
+#72 0x40a9920000000000 in ?? ()
+#73 0x40aaf40000000000 in ?? ()
+#74 0x40ac6a0000000000 in ?? ()
+#75 0x40adf00000000000 in ?? ()
+#76 0x40af8a0000000000 in ?? ()
+#77 0x40b09c0000000000 in ?? ()
+#78 0x40b17d0000000000 in ?? ()
+#79 0x40b2690000000000 in ?? ()
+#80 0x40b3610000000000 in ?? ()
+#81 0x40b4640000000000 in ?? ()
+#82 0x40b5740000000000 in ?? ()
+#83 0x40b6910000000000 in ?? ()
+#84 0x40b7bc0000000000 in ?? ()
+#85 0x40b8f50000000000 in ?? ()
+#86 0x40ba3d0000000000 in ?? ()
+#87 0x40bb580000000000 in ?? ()
+#88 0x00000000088a8040 in ?? ()
+#89 0x0000000008738fb0 in ?? ()
+#90 0x00000000081b34a0 in ?? ()
+#91 0x00000000088a8040 in ?? ()
+#92 0x0000000000000001 in ?? ()
+#93 0x0000000000000001 in ?? ()
+#94 0x0000000000000000 in ?? ()
+===========================================================
+
+
+The lines below might hint at the cause of the crash.
+You may get help by asking at the ROOT forum http://root.cern.ch/forum.
+Only if you are really convinced it is a bug in ROOT then please submit a
+report at http://root.cern.ch/bugs. Please post the ENTIRE stack trace
+from above as an attachment in addition to anything else
+that might help us fixing this issue.
+===========================================================
+#5  parse_lsda_header (context=context
+entry=0x7fff0fb31dc0, p=p
+entry=0x2b4b9b2eb22c <error: Cannot access memory at address 0x2b4b9b2eb22c>, info=info
+entry=0x7fff0fb31c60) at ../../../../libstdc++-v3/libsupc++/eh_personality.cc:58
+#6  0x00002b4b8f4fa1cb in __cxxabiv1::__gxx_personality_v0 (version=<optimized out>, actions=1, exception_class=5138137972254386944, ue_header=0xaf0b1f0, context=0x7fff0fb31dc0) at ../../../../libstdc++-v3/libsupc++/eh_personality.cc:445
+#7  0x00002b4b8f5fc28b in _Unwind_RaiseException (exc=exc
+entry=0xaf0b1f0) at ../../../libgcc/unwind.inc:113
+#8  0x00002b4b8f4facf6 in __cxxabiv1::__cxa_throw (obj=obj
+entry=0xaf0b210, tinfo=0x2b4b8f5dea90 <typeinfo for std::runtime_error>, dest=0x2b4b8f50fee0 <std::runtime_error::~runtime_error()>) at ../../../../libstdc++-v3/libsupc++/eh_throw.cc:88
+#9  0x00002b4b9b341bd7 in uhh2::Hists::hist (this=0x8752890, name=0xadff790 "pt_resolution_125") at src/Hists.cxx:16
+#10 0x00002b4b9b2d5643 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_Alloc_hider::_Alloc_hider (__a=..., __dat=<optimized out>, this=0x0) at /cvmfs/cms.cern.ch/slc6_amd64_gcc700/external/gcc/7.0.0-omkpbe2/include/c++/7.3.1/bits/basic_string.h:149
+#11 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string (__str=..., this=0x0) at /cvmfs/cms.cern.ch/slc6_amd64_gcc700/external/gcc/7.0.0-omkpbe2/include/c++/7.3.1/bits/basic_string.h:439
+#12 uhh2::Context::get (key=..., this=0x7457a40) at /nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/core/include/AnalysisModule.h:97
+#13 uhh2examples::MCShowerWeight::MCShowerWeight (this=0x348, ctx=...) at src/MCWeightsModule.cxx:71
+#14 0x402e000000000000 in ?? ()
+#15 0x4032000000000000 in ?? ()
+#16 0x4035000000000000 in ?? ()
+#17 0x4038000000000000 in ?? ()
+#18 0x403c000000000000 in ?? ()
+#19 0x4040000000000000 in ?? ()
+#20 0x4042800000000000 in ?? ()
+#21 0x4045800000000000 in ?? ()
+#22 0x4048800000000000 in ?? ()
+#23 0x404c000000000000 in ?? ()
+#24 0x4050000000000000 in ?? ()
+#25 0x4052800000000000 in ?? ()
+#26 0x4055000000000000 in ?? ()
+#27 0x4058400000000000 in ?? ()
+#28 0x405c800000000000 in ?? ()
+#29 0x4060a00000000000 in ?? ()
+#30 0x4063200000000000 in ?? ()
+#31 0x4065c00000000000 in ?? ()
+#32 0x4068800000000000 in ?? ()
+#33 0x406b800000000000 in ?? ()
+#34 0x406ea00000000000 in ?? ()
+#35 0x4071000000000000 in ?? ()
+#36 0x4072c00000000000 in ?? ()
+#37 0x4074a00000000000 in ?? ()
+#38 0x4076a00000000000 in ?? ()
+#39 0x4078b00000000000 in ?? ()
+#40 0x407ae00000000000 in ?? ()
+#41 0x407d400000000000 in ?? ()
+#42 0x407fb00000000000 in ?? ()
+#43 0x4081200000000000 in ?? ()
+#44 0x4082800000000000 in ?? ()
+#45 0x4083f00000000000 in ?? ()
+#46 0x4085700000000000 in ?? ()
+#47 0x4087080000000000 in ?? ()
+#48 0x4088b00000000000 in ?? ()
+#49 0x408a700000000000 in ?? ()
+#50 0x408c480000000000 in ?? ()
+#51 0x408e380000000000 in ?? ()
+#52 0x4090200000000000 in ?? ()
+#53 0x4091340000000000 in ?? ()
+#54 0x4092500000000000 in ?? ()
+#55 0x4093800000000000 in ?? ()
+#56 0x4094bc0000000000 in ?? ()
+#57 0x4096080000000000 in ?? ()
+#58 0x4097640000000000 in ?? ()
+#59 0x4098d00000000000 in ?? ()
+#60 0x409a500000000000 in ?? ()
+#61 0x409be00000000000 in ?? ()
+#62 0x409d880000000000 in ?? ()
+#63 0x409f400000000000 in ?? ()
+#64 0x40a0880000000000 in ?? ()
+#65 0x40a17c0000000000 in ?? ()
+#66 0x40a27c0000000000 in ?? ()
+#67 0x40a3880000000000 in ?? ()
+#68 0x40a4a00000000000 in ?? ()
+#69 0x40a5c60000000000 in ?? ()
+#70 0x40a6fa0000000000 in ?? ()
+#71 0x40a83e0000000000 in ?? ()
+#72 0x40a9920000000000 in ?? ()
+#73 0x40aaf40000000000 in ?? ()
+#74 0x40ac6a0000000000 in ?? ()
+#75 0x40adf00000000000 in ?? ()
+#76 0x40af8a0000000000 in ?? ()
+#77 0x40b09c0000000000 in ?? ()
+#78 0x40b17d0000000000 in ?? ()
+#79 0x40b2690000000000 in ?? ()
+#80 0x40b3610000000000 in ?? ()
+#81 0x40b4640000000000 in ?? ()
+#82 0x40b5740000000000 in ?? ()
+#83 0x40b6910000000000 in ?? ()
+#84 0x40b7bc0000000000 in ?? ()
+#85 0x40b8f50000000000 in ?? ()
+#86 0x40ba3d0000000000 in ?? ()
+#87 0x40bb580000000000 in ?? ()
+#88 0x00000000088a8040 in ?? ()
+#89 0x0000000008738fb0 in ?? ()
+#90 0x00000000081b34a0 in ?? ()
+#91 0x00000000088a8040 in ?? ()
+#92 0x0000000000000001 in ?? ()
+#93 0x0000000000000001 in ?? ()
+#94 0x0000000000000000 in ?? ()
+===========================================================
+
+

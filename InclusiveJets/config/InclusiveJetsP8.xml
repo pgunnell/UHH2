@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd">[
+       <!ENTITY MC_QCD_P8_Pt-15-30 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/MC_QCD_Pt_15to30_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-30-50 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_30to50_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-50-80 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_50to80_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-80-120 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_80to120_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-120-170 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_120to170_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-170-300 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/MC_QCD_Pt_170to300_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-300-470 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/MC_QCD_Pt_300to470_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-470-600 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_470to600_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-600-800 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_600to800_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-800-1000 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_800to1000_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-1000-1400 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_1000to1400_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-1400-1800 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_1400to1800_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-1800-2400 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/QCD_Pt_1800to2400_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-2400-3200 SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/MC_QCD_Pt_2400to3200_TuneCP5_13TeV_pythia8.xml">
+       <!ENTITY MC_QCD_P8_Pt-3200-Inf SYSTEM "/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/InclusiveJets/config/MC_QCD_Pt_3200toInf_TuneCP5_13TeV_pythia8.xml">
+]>
+
+<!--
+   <ConfigParse NEventsBreak="0" LastBreak="0" FileSplit="10" />
+   <ConfigSGE RAM ="2" DISK ="2" Mail="paolo.gunnellini@desy.de" Notification="as" Workdir="splitInclusiveJets"/>
+-->
+
+<!-- OutputLevel controls which messages are printed; set to VERBOSE or DEBUG for more verbosity, to WARNING or ERROR for less -->
+<JobConfiguration JobName="ExampleCycleJob" OutputLevel="INFO">
+    <Library Name="libSUHH2InclusiveJets"/>
+    <Package Name="SUHH2InclusiveJets.par" />
+
+   <Cycle Name="uhh2::AnalysisModuleRunner" OutputDirectory="./" PostFix="" TargetLumi="1" >
+   <!-- <Cycle Name="uhh2::AnalysisModuleRunner"  RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="/nfs/dust/cms/user/ottjoc/proof-wd/" ProofNodes="2" OutputDirectory="./" PostFix="" TargetLumi="1" >  -->
+
+        <InputData Lumi="0.01265239372" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-15-30-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-15-30;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="0.1858184284" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-30-50-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-30-50;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="1.211087729" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-50-80-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-50-80;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="12.1600994" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-80-120-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-80-120;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="73.29801129" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-120-170-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-120-170;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="255.1494696" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-170-300-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-170-300;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="2877.189332" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-300-470-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-300-470;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="48001.15155" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-470-600-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-470-600;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="421236.2556" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-600-800-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-600-800;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="1413329.882" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-800-1000-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-800-1000;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="2618395.455" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-1000-1400-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-1000-1400;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="8743878.807" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-1400-1800-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-1400-1800;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="33403896.85" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-1800-2400-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-1800-2400;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="272710368.2" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-2400-3200-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-2400-3200;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+
+        <InputData Lumi="4580597782" NEventsMax="-1" Type="MC" Version="QCD_P8_Pt-3200-Inf-2017v2" Cacheable="False"> 
+	  &MC_QCD_P8_Pt-3200-Inf;
+            <InputTree Name="AnalysisTree" /> 
+            <OutputTree Name="AnalysisTree" />
+	</InputData>
+        
+        <UserConfig>
+            <!-- define which collections to read from the input. Only specify what you need to save I/O time -->
+            <Item Name="PrimaryVertexCollection" Value="offlineSlimmedPrimaryVertices" /> 
+            <Item Name="JetCollection" Value="jetsAk4Puppi" />
+            <Item Name="GenJetCollection" Value="slimmedGenJets" />
+	    <Item Name="ElectronCollection" Value="slimmedElectronsUSER" />
+	    <Item Name="MuonCollection" Value="slimmedMuonsUSER" /> 
+            <Item Name="METName" Value="slimmedMETs" />
+            
+            <!-- The list of available collections to read in corresponds to the pointer members in event. The 'Name's to use here in the configuration are:
+            
+                 PrimaryVertexCollection
+                 ElectronCollection
+                 MuonCollection
+                 TauCollection
+                 PhotonCollection
+                 JetCollection
+                 TopJetCollection
+                 METName
+                 
+                 GenInfoName
+                 GenJetCollection
+                 GenTopJetCollection
+                 GenParticleCollection
+                 
+                 Note that the last four are only read in for MC (InputData Type="MC"), so it is save to specify
+                 them for real data, although those branches do not exist.
+                 
+                 As 'Value', always use the branch name (if in doubt, open the input file in ROOT).
+                 
+                 By default, triggers are read. To explicitly disable reading triggers, use:
+                 <Item Name="readTrigger" Value="false" />
+            -->
+            
+            <!-- the class name of the AnalysisModule subclasses to run: -->
+            <Item Name="AnalysisModule" Value="InclusiveJetsModule" /> 
+            
+            <!-- tell AnalysisModuleRunner NOT to use the MC event weight from SFrame; rather let
+                 MCLumiWeight (called via CommonModules) calculate the MC event weight. The MC
+                 event weight assigned by MCLumiWeight is InputData.Lumi / Cycle.TargetLumi. -->
+            <Item Name="use_sframe_weight" Value="false" />
+
+	    <!-- how to shift up/down the jec and jer, this is done automatically by the UHH2 (nominal, up, down)-->
+	    <Item Name="jersmear_direction" Value="nominal"/>
+	    <Item Name="jecsmear_direction" Value="nominal"/>
+            
+            <!-- configuration for MCPileupReweight (run as part of CommonModules): -->
+            <Item Name="pileup_directory" Value="/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/common/data/2017/MyMCPileupHistogram.root" />
+	    <Item Name="pileup_directory_data" Value="/nfs/dust/cms/user/gunnep/HiggsAnalysisUHH_102/CMSSW_10_2_11/src/UHH2/common/data/2017/MyDataPileupHistogram.root" />   
+
+            <!-- Some test configuration; see InclusiveJetsModule.cxx for how to access it: -->
+            <Item Name="TestKey" Value="TestKeyValue" />
+
+        </UserConfig>
+    </Cycle>
+</JobConfiguration>
